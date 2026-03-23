@@ -118,7 +118,7 @@ const Chat = ({ userEmail, onLogout }: ChatProps) => {
                 }`}
               >
                 {msg.role === 'assistant' ? (
-                  <div className="prose prose-sm prose-invert max-w-none">
+                  <div className={`prose prose-sm max-w-none ${msg.color === 'white' || msg.color === 'yellow' ? 'prose-stone' : 'prose-invert'}`}>
                     <ReactMarkdown>{msg.content}</ReactMarkdown>
                   </div>
                 ) : (
