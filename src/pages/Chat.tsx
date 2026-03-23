@@ -144,7 +144,7 @@ const Chat = ({ userEmail, onLogout }: ChatProps) => {
                 }`}
               >
                 {msg.role === 'assistant' ? (
-                  <div className="prose prose-sm prose-slate max-w-none dark:prose-invert">
+                  <div className="prose prose-sm max-w-none [&>*]:!text-inherit !text-inherit">
                     <ReactMarkdown>{msg.content}</ReactMarkdown>
                   </div>
                 ) : (
