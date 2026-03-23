@@ -2,24 +2,24 @@ export type ResponseColor = "blue" | "yellow" | "orange" | "white" | "grey" | "b
 
 /**
  * Priority 1: Time Parsing Logic
- * Extracted logic to handle "by [Time]", "next week", and "in [X] hours".
+ * Logic to handle "by [Time]", "next week", and "in [X] hours".
  */
 function parseDeadlineHours(input: string): number | null {
   const lowerInput = input.toLowerCase();
 
-  // Handle relative long-term deadlines
+  // 1. Handle long-term keywords
   if (lowerInput.includes("next week") || lowerInput.includes("days")) {
     return 168; // Returns > 24 hours to trigger Blue
   }
 
-  // Handle "in X hours" or "X hours left" (Fix for the 48 hours bug)
+  // 2. Handle "in X hours" (Fix for the 48 hours bug)
   const hoursPattern = /(?:in\s+)?(\d+)\s*hours?/i;
   const hoursMatch = lowerInput.match(hoursPattern);
   if (hoursMatch) {
     return parseInt(hoursMatch[1]);
   }
 
-  // Handle specific time formats (e.g., "by 1:45 AM")
+  // 3. Handle specific time formats (e.g., "by 1:45 AM")
   const timePattern = /(?:by|at|deadline)\s+(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i;
   const match = lowerInput.match(timePattern);
 
@@ -36,13 +36,13 @@ function parseDeadlineHours(input: string): number | null {
     const target = new Date();
     target.setHours(hours, minutes, 0, 0);
 
-    // If the target time has already passed today, assume it's for tomorrow
+    // If target has passed today (e.g., it's 2pm and you say 1pm), assume tomorrow
     if (target < now) {
       target.setDate(target.getDate() + 1);
     }
 
     const diffInMs = target.getTime() - now.getTime();
-    return diffInMs / (1000 * 60 * 60); // Return difference in hours
+    return diffInMs / (1000 * 60 * 60);
   }
 
   return null;
@@ -57,13 +57,13 @@ function hasTaskAndDeadline(input: string): boolean {
 
 /**
  * Priority 2: Grayscale logic for Numbers
- * Logic ensures multiples of 100 are Black, while 0 is White.
+ * Ensures 100/1100 are Black, 750 is Grey, 0 is White.
  */
 function getNumberColor(num: number): ResponseColor {
   const absNum = Math.abs(num);
   const last2 = absNum % 100;
 
-  // Multiples of 100 (100, 1100, etc.) or ends in 99 -> BLACK
+  // Multiples of 100 (100, 1100) or ends in 99 -> BLACK
   if ((absNum > 0 && last2 === 0) || last2 === 99) {
     return "black";
   }
@@ -72,7 +72,7 @@ function getNumberColor(num: number): ResponseColor {
   // Exactly 0 -> WHITE
   if (absNum === 0) return "white";
 
-  // Grayscale fallback gradient
+  // Grayscale fallback
   if (last2 < 25) return "white";
   if (last2 < 75) return "grey";
   return "black";
@@ -80,35 +80,37 @@ function getNumberColor(num: number): ResponseColor {
 
 /**
  * THE WATERFALL ENGINE:
- * 1. Deadline Priority
- * 2. Number Priority
- * 3. Sentiment Fallback
+ * 1. Deadline Priority (Time-based)
+ * 2. Number Priority (Math-based)
+ * 3. Sentiment Fallback (AI-based)
  */
 export function determineColor(input: string): ResponseColor {
   const trimmed = input.trim();
 
-  // 1. Check for Deadlines first
+  // 1. Priority One: Deadlines
   if (hasTaskAndDeadline(trimmed)) {
     const hours = parseDeadlineHours(trimmed);
+
     if (hours !== null) {
-      if (hours >= 24) return "blue";
-      if (hours < 2) return "orange";
-      return "yellow";
+      if (hours < 2) return "orange"; // Urgent: < 2h
+      if (hours < 24) return "yellow"; // Near-term: 2h - 24h
+      return "blue"; // Long-term: >= 24h
     }
     return "blue";
   }
 
-  // 2. Check if the input is strictly a Number
+  // 2. Priority Two: Just a Number
   if (/^\s*-?\d+\s*$/.test(trimmed)) {
     return getNumberColor(parseInt(trimmed));
   }
 
-  // 3. Otherwise, use AI Sentiment (Amber is the placeholder)
+  // 3. Priority Three: Sentiment
   return "amber";
 }
 
 /**
  * WCAG 2.0 AA Contrast Mapping (4.5:1 ratio)
+ * Pairs background colors with high-contrast text.
  */
 export function getColorClass(color: ResponseColor): string {
   const map: Record<ResponseColor, string> = {
