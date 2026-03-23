@@ -185,7 +185,7 @@ const Chat = ({ userEmail, onLogout }: ChatProps) => {
             <Send className="h-5 w-5" />
           </Button>
         </form>
-      </footer export default Chat;
+      </footer>
     </div>
   );
 };
