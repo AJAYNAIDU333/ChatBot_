@@ -102,7 +102,8 @@ export function determineColor(input: string): ResponseColor {
     if (hours !== null) {
       if (hours > 24) return 'blue';
       if (hours < 2) return 'orange';
-      return 'blue'; // 2-24hrs still blue per spec (>24 or "next week")
+      if (hours <= 24) return 'yellow';
+      return 'blue';
     }
     return 'blue'; // has keyword but can't parse → default blue
   }
