@@ -24,18 +24,36 @@ export function getBubbleStyle(color: ResponseColor): BubbleStyle {
 
 // --- Priority 1: Deadline detection ---
 
+function parseTimeWithoutDateHours(input: string): number | null {
+  const match = input.match(/\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/i);
+  if (!match) return null;
+
+  let hour = parseInt(match[1], 10);
+  const minutes = match[2] ? parseInt(match[2], 10) : 0;
+  const isPM = match[3].toLowerCase() === 'pm';
+
+  if (isPM && hour !== 12) hour += 12;
+  if (!isPM && hour === 12) hour = 0;
+
+  const now = new Date();
+  const target = new Date(now);
+  target.setHours(hour, minutes, 0, 0);
+
+  // Time-only input means "today" first; if passed, assume tomorrow.
+  if (target.getTime() <= now.getTime()) {
+    target.setDate(target.getDate() + 1);
+  }
+
+  return (target.getTime() - now.getTime()) / (1000 * 60 * 60);
+}
+
 function parseDeadlineHours(input: string): number | null {
   const lower = input.toLowerCase();
 
-  // "next week" or "next month" → >24h
   if (/next\s+(week|month|year)/i.test(lower)) return 168;
-
-  // "tomorrow" → >24h
   if (/\btomorrow\b/i.test(lower)) return 30;
 
   const patterns = [
-    /by\s+(\d{1,2}):?(\d{2})?\s*(am|pm)/i,
-    /at\s+(\d{1,2}):?(\d{2})?\s*(am|pm)/i,
     /deadline\s+(\d+)\s*h/i,
     /in\s+(\d+)\s*hours?/i,
     /(\d+)\s*hours?\s*(left|remaining)/i,
@@ -44,31 +62,36 @@ function parseDeadlineHours(input: string): number | null {
 
   for (const pattern of patterns) {
     const match = input.match(pattern);
-    if (match) {
-      if (match[3] && /^(am|pm)$/i.test(match[3])) {
-        let hour = parseInt(match[1]);
-        const minutes = match[2] ? parseInt(match[2]) : 0;
-        const isPM = match[3].toLowerCase() === 'pm';
-        if (isPM && hour !== 12) hour += 12;
-        if (!isPM && hour === 12) hour = 0;
-        const now = new Date();
-        const target = new Date(now);
-        target.setHours(hour, minutes, 0, 0);
-        // If time already passed today, assume tomorrow
-        if (target.getTime() <= now.getTime()) {
-          target.setDate(target.getDate() + 1);
-        }
-        const diffHours = (target.getTime() - now.getTime()) / (1000 * 60 * 60);
-        return diffHours;
-      }
-      return parseInt(match[1]);
-    }
+    if (match) return parseInt(match[1], 10);
   }
+
   return null;
 }
 
 function hasDeadlineKeyword(input: string): boolean {
   return /\b(by|at|deadline)\b/i.test(input);
+}
+
+function hasClockTime(input: string): boolean {
+  return /\b\d{1,2}(?::\d{2})?\s*(am|pm)\b/i.test(input);
+}
+
+function getDeadlineColor(input: string): ResponseColor | null {
+  if (!hasDeadlineKeyword(input) && !hasClockTime(input)) return null;
+
+  const timeHours = parseTimeWithoutDateHours(input);
+  if (timeHours !== null) {
+    return timeHours < 2 ? 'orange' : 'blue';
+  }
+
+  const hours = parseDeadlineHours(input);
+  if (hours !== null) {
+    if (hours > 24) return 'blue';
+    if (hours < 2) return 'orange';
+    return 'yellow';
+  }
+
+  return 'blue';
 }
 
 // --- Priority 2: Trailing number detection ---
@@ -97,16 +120,8 @@ export function determineColor(input: string): ResponseColor {
   const trimmed = input.trim();
 
   // Priority 1: Deadline
-  if (hasDeadlineKeyword(trimmed)) {
-    const hours = parseDeadlineHours(trimmed);
-    if (hours !== null) {
-      if (hours > 24) return 'blue';
-      if (hours < 2) return 'orange';
-      if (hours <= 24) return 'yellow';
-      return 'blue';
-    }
-    return 'blue'; // has keyword but can't parse → default blue
-  }
+  const deadlineColor = getDeadlineColor(trimmed);
+  if (deadlineColor) return deadlineColor;
 
   // Priority 2: Input ends with a number
   const trailingNum = extractTrailingNumber(trimmed);
