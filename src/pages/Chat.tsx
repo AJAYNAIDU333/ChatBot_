@@ -155,8 +155,13 @@ const Chat = ({ userEmail, onLogout }: ChatProps) => {
           ))}
           {isLoading && (
             <div className="flex justify-start animate-in fade-in slide-in-from-left-2">
-              <div className="rounded-2xl bg-muted px-5 py-3 text-sm text-muted-foreground italic">
-                Президент обдумывает ответ...
+              <div className="rounded-2xl bg-muted px-5 py-3 text-sm text-muted-foreground italic flex items-center gap-2">
+                <span className="animate-pulse">Президент обдумывает ответ...</span>
+                <span className="flex gap-1">
+                  <span className="h-2 w-2 rounded-full bg-muted-foreground animate-bounce [animation-delay:0ms]" />
+                  <span className="h-2 w-2 rounded-full bg-muted-foreground animate-bounce [animation-delay:150ms]" />
+                  <span className="h-2 w-2 rounded-full bg-muted-foreground animate-bounce [animation-delay:300ms]" />
+                </span>
               </div>
             </div>
           )}
