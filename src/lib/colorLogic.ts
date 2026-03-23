@@ -55,10 +55,23 @@ function getNumberColor(num: number): ResponseColor {
   const absNum = Math.abs(num);
   const last2 = absNum % 100;
 
-  if (last2 === 0) return "white";
-  if (last2 === 50) return "grey";
-  if (absNum === 100 || last2 === 99) return "black";
+  // 1. PRIORITY: Multiples of 100 (100, 1100, 2500) or ends in 99
+  // We check absNum > 0 so that '0' itself stays White.
+  if ((absNum > 0 && last2 === 0) || last2 === 99 || absNum === 100) {
+    return "black";
+  }
 
+  // 2. PRIORITY: Ends in 50 (750, 50, 1050)
+  if (last2 === 50) {
+    return "grey";
+  }
+
+  // 3. PRIORITY: Zero or base cases
+  if (absNum === 0) {
+    return "white";
+  }
+
+  // 4. FALLBACK: Grayscale gradient logic
   if (last2 < 25) return "white";
   if (last2 < 75) return "grey";
   return "black";
