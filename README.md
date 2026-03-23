@@ -47,11 +47,19 @@ Triggers only if no deadline or number is found. The Gemini model identifies the
 
 ---
 
+
 ## 🧪 Verified Test Suite
-To verify the logic, use these inputs (relative to current system time):
-1. **Urgency:** "Fix the server by 3:30 AM" → **Deep Orange** (If current time is ~1:30 AM).
-2. **Logic Override:** "I am happy about the **1100** reports." → **Black** (Priority 2 Number beats Priority 3 Sentiment).
-3. **Conflict Resolution:** "Submit **100** tasks by **2:00 PM**." → **Yellow** (Priority 1 Deadline beats Priority 2 Number).
-4. **Resilience:** If the Gemini API credits are exhausted, the bubble still correctly colors locally based on the deterministic waterfall.
+
+To ensure the **Presidential Chatbot** remains mission-critical and reliable, the following test cases verify the **Deterministic Waterfall Logic** (**Time > Numbers > Sentiment**).
+
+1. **High-Urgency Deadlines (Deep Orange)** Inputting tasks like **"Fix the server by 3:00 AM"** triggers a **Deep Orange** bubble. The logic calculates the real-time delta from the current system clock (e.g., 1:35 AM), identifying the urgency as **under 2 hours**.
+
+2. **Long-Term Planning (Royal Blue)** Inputting directives such as **"Complete in 48 hours"** triggers a **Royal Blue** bubble. The regex engine successfully identifies numerical values **over 24 hours**, shifting the UI to a **"long-term planning"** state.
+
+3. **Numerical Power States (Black)** Inputting a **"Power Number"** like **"1100"** or **"100"** triggers a high-contrast **Black** bubble. The modulo math (**absNum % 100 === 0**) ensures that significant data points are visually prioritized over standard text.
+
+4. **Mid-Tier Data Mapping (Grey)** Inputting numbers ending in **50**, such as **"750"**, triggers a **Grey** bubble. This demonstrates the **"Grayscale Logic"** where the UI provides a neutral visual weight to secondary numerical data.
+
+5. **Sentiment Override (Forest Green / Crimson Red)** Inputting purely emotional statements like **"The mission was a success!"** or **"I am worried"** triggers **Green** or **Red**. These only activate if **no deadlines or numbers** are detected, proving the **Priority Waterfall** is functioning correctly.
 
 ---
