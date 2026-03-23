@@ -45,7 +45,6 @@ function parseDeadlineHours(input: string): number | null {
  * Checks if the input is a Task with a Deadline keyword
  */
 function hasTaskAndDeadline(input: string): boolean {
-  // Broadened regex to catch common human phrasing
   return /\b(deadline|by|due|until|before|next week|at\s+\d)\b/i.test(input);
 }
 
@@ -56,11 +55,10 @@ function getNumberColor(num: number): ResponseColor {
   const absNum = Math.abs(num);
   const last2 = absNum % 100;
 
-  if (last2 === 0) return "white"; // ends in 00
-  if (last2 === 50) return "grey"; // ends in 50
-  if (absNum === 100 || last2 === 99) return "black"; // Priority Black
+  if (last2 === 0) return "white";
+  if (last2 === 50) return "grey";
+  if (absNum === 100 || last2 === 99) return "black";
 
-  // Weighted interpolation for WCAG variety
   if (last2 < 25) return "white";
   if (last2 < 75) return "grey";
   return "black";
@@ -72,40 +70,40 @@ function getNumberColor(num: number): ResponseColor {
 export function determineColor(input: string): ResponseColor {
   const trimmed = input.trim();
 
-  // 1. Priority One: Deadlines
+  // 1. Priority One: Deadlines (Blue/Yellow/Orange)
   if (hasTaskAndDeadline(trimmed)) {
     const hours = parseDeadlineHours(trimmed);
     if (hours !== null) {
       if (hours >= 24) return "blue";
       if (hours < 2) return "orange";
-      return "yellow"; // 2h - 24h
+      return "yellow";
     }
-    return "blue"; // Fallback for vague deadlines
+    return "blue";
   }
 
-  // 2. Priority Two: Just a Number
+  // 2. Priority Two: Just a Number (White/Grey/Black)
   if (/^\s*-?\d+\s*$/.test(trimmed)) {
-    const num = parseInt(trimmed);
-    return getNumberColor(num);
+    return getNumberColor(parseInt(trimmed));
   }
 
-  // 3. Priority Three: Sentiment (Placeholder for AI override)
+  // 3. Priority Three: Sentiment (Default to Amber for AI to override)
   return "amber";
 }
 
 /**
  * WCAG 2.0 Compliant Tailwind Mapping
+ * Ensures 4.5:1 Contrast Ratio
  */
 export function getColorClass(color: ResponseColor): string {
   const map: Record<ResponseColor, string> = {
-    blue: "text-white bg-blue-700", // High contrast Blue
-    yellow: "text-black bg-yellow-400", // Dark text on Yellow
-    orange: "text-white bg-orange-700", // High contrast Orange
+    blue: "text-white bg-blue-700",
+    yellow: "text-black bg-yellow-400",
+    orange: "text-white bg-orange-700",
     white: "text-black bg-white border border-slate-200",
     grey: "text-white bg-slate-500",
     black: "text-white bg-black",
-    red: "text-white bg-red-800", // Deep Red for contrast
-    green: "text-white bg-green-800", // Deep Green for contrast
+    red: "text-white bg-red-800",
+    green: "text-white bg-green-800",
     amber: "text-white bg-amber-700",
   };
   return map[color];
