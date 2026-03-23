@@ -51,12 +51,15 @@ function parseDeadlineHours(input: string): number | null {
         const isPM = match[3].toLowerCase() === 'pm';
         if (isPM && hour !== 12) hour += 12;
         if (!isPM && hour === 12) hour = 0;
-        const targetMinutes = hour * 60 + minutes;
         const now = new Date();
-        const currentMinutes = now.getHours() * 60 + now.getMinutes();
-        let diff = targetMinutes - currentMinutes;
-        if (diff < 0) diff += 24 * 60;
-        return diff / 60;
+        const target = new Date(now);
+        target.setHours(hour, minutes, 0, 0);
+        // If time already passed today, assume tomorrow
+        if (target.getTime() <= now.getTime()) {
+          target.setDate(target.getDate() + 1);
+        }
+        const diffHours = (target.getTime() - now.getTime()) / (1000 * 60 * 60);
+        return diffHours;
       }
       return parseInt(match[1]);
     }
