@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Send, LogOut } from 'lucide-react';
-import { determineColor, getColorClass, getBorderColorClass, type ResponseColor } from '@/lib/colorLogic';
+import { determineColor, getBubbleStyle, type ResponseColor } from '@/lib/colorLogic';
 import { supabase } from '@/integrations/supabase/client';
 
 interface Message {
@@ -110,11 +110,15 @@ const Chat = ({ userEmail, onLogout }: ChatProps) => {
                 className={`max-w-[85%] rounded-lg px-4 py-3 text-sm leading-relaxed ${
                   msg.role === 'user'
                     ? 'bg-primary text-primary-foreground'
-                    : `bg-card border-l-4 ${msg.color ? getBorderColorClass(msg.color) : 'border-l-border'} ${msg.color ? getColorClass(msg.color) : 'text-foreground'}`
+                    : (() => {
+                        if (!msg.color) return 'bg-card text-foreground border-l-4 border-l-border';
+                        const s = getBubbleStyle(msg.color);
+                        return `${s.bg} ${s.text} border-l-4 ${s.border}`;
+                      })()
                 }`}
               >
                 {msg.role === 'assistant' ? (
-                  <div className="prose prose-sm prose-invert max-w-none">
+                  <div className={`prose prose-sm max-w-none ${msg.color === 'white' || msg.color === 'yellow' ? 'prose-stone' : 'prose-invert'}`}>
                     <ReactMarkdown>{msg.content}</ReactMarkdown>
                   </div>
                 ) : (
