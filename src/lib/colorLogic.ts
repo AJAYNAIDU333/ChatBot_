@@ -1,18 +1,43 @@
 export type ResponseColor = 'blue' | 'yellow' | 'orange' | 'white' | 'grey' | 'black' | 'red' | 'green' | 'amber';
 
+export interface BubbleStyle {
+  bg: string;
+  text: string;
+  border: string;
+}
+
+const BUBBLE_STYLES: Record<ResponseColor, BubbleStyle> = {
+  blue:   { bg: 'bg-blue-700',    text: 'text-white', border: 'border-l-blue-700' },
+  yellow: { bg: 'bg-yellow-500',  text: 'text-black', border: 'border-l-yellow-500' },
+  orange: { bg: 'bg-orange-700',  text: 'text-white', border: 'border-l-orange-700' },
+  white:  { bg: 'bg-white',       text: 'text-black', border: 'border-l-slate-200' },
+  grey:   { bg: 'bg-slate-500',   text: 'text-white', border: 'border-l-slate-500' },
+  black:  { bg: 'bg-black',       text: 'text-white', border: 'border-l-black' },
+  red:    { bg: 'bg-red-800',     text: 'text-white', border: 'border-l-red-800' },
+  green:  { bg: 'bg-green-800',   text: 'text-white', border: 'border-l-green-800' },
+  amber:  { bg: 'bg-amber-600',   text: 'text-white', border: 'border-l-amber-600' },
+};
+
+export function getBubbleStyle(color: ResponseColor): BubbleStyle {
+  return BUBBLE_STYLES[color];
+}
+
+// --- Priority 1: Deadline detection ---
+
 function parseDeadlineHours(input: string): number | null {
-  const deadlinePatterns = [
+  const patterns = [
     /by\s+(\d{1,2})\s*(am|pm)/i,
+    /at\s+(\d{1,2})\s*(am|pm)/i,
     /deadline\s+(\d+)\s*h/i,
     /in\s+(\d+)\s*hours?/i,
     /(\d+)\s*hours?\s*(left|remaining)/i,
     /within\s+(\d+)\s*hours?/i,
   ];
 
-  for (const pattern of deadlinePatterns) {
+  for (const pattern of patterns) {
     const match = input.match(pattern);
     if (match) {
-      if (match[2] && (match[2].toLowerCase() === 'am' || match[2].toLowerCase() === 'pm')) {
+      if (match[2] && /^(am|pm)$/i.test(match[2])) {
         const hour = parseInt(match[1]);
         const isPM = match[2].toLowerCase() === 'pm';
         const targetHour = isPM && hour !== 12 ? hour + 12 : (!isPM && hour === 12 ? 0 : hour);
@@ -28,91 +53,50 @@ function parseDeadlineHours(input: string): number | null {
   return null;
 }
 
-function hasTaskAndDeadline(input: string): boolean {
-  return /\b(deadline|by\s+\d|due|until|before|by\s+\d+\s*(am|pm))\b/i.test(input);
+function hasDeadlineKeyword(input: string): boolean {
+  return /\b(by|at|deadline)\b/i.test(input);
 }
+
+// --- Priority 2: Number detection ---
 
 function isJustANumber(input: string): boolean {
   return /^\s*-?\d+\s*$/.test(input);
 }
 
-/**
- * Priority 2: Last 2 digits determine grayscale
- * - ends in 00 → White
- * - ends in 50 → Grey
- * - ends in 99 or the number is exactly 100 → Black
- */
 function getNumberColor(num: number): ResponseColor {
   const absNum = Math.abs(num);
   const last2 = absNum % 100;
 
-  if (last2 === 0) return 'white';   // ends in 00
-  if (last2 === 50) return 'grey';   // ends in 50
-  if (last2 === 99 || absNum === 100) return 'black'; // ends in 99, or exactly 100
+  if (last2 === 0) return 'white';
+  if (last2 === 50) return 'grey';
+  if (last2 === 99 || absNum === 100) return 'black';
 
-  // For other numbers, interpolate: closer to 00=white, 50=grey, 99=black
   if (last2 < 25) return 'white';
   if (last2 < 75) return 'grey';
   return 'black';
 }
 
-/**
- * Color Logic Waterfall:
- * Priority 1: Task + Deadline → Blue (>=24h), Yellow (12-24h implied, >=2h), Orange (<2h)
- * Priority 2: Input is just a number → Grayscale by last 2 digits
- * Priority 3: Sentiment (determined by AI) → Red/Green/Amber
- */
+// --- Main deterministic waterfall ---
+
 export function determineColor(input: string): ResponseColor {
   const trimmed = input.trim();
 
-  // Priority 1: Task + Deadline
-  if (hasTaskAndDeadline(trimmed)) {
+  // Priority 1: Deadline
+  if (hasDeadlineKeyword(trimmed)) {
     const hours = parseDeadlineHours(trimmed);
     if (hours !== null) {
       if (hours >= 24) return 'blue';
       if (hours >= 2) return 'yellow';
-      return 'orange';  // < 2 hours
+      return 'orange';
     }
-    // Has deadline keyword but can't parse exact hours — default yellow (middle urgency)
-    return 'yellow';
+    return 'yellow'; // has keyword but can't parse hours
   }
 
-  // Priority 2: Just a number → grayscale
+  // Priority 2: Number
   if (isJustANumber(trimmed)) {
-    const num = parseInt(trimmed);
-    return getNumberColor(num);
+    return getNumberColor(parseInt(trimmed));
   }
 
-  // Priority 3: Sentiment — return placeholder, AI will override
+  // Priority 3: Sentiment — AI will provide
   return 'amber';
-}
-
-export function getColorClass(color: ResponseColor): string {
-  const map: Record<ResponseColor, string> = {
-    blue: 'text-response-blue',
-    yellow: 'text-response-yellow',
-    orange: 'text-response-orange',
-    white: 'text-response-white',
-    grey: 'text-response-grey',
-    black: 'text-response-black',
-    red: 'text-response-red',
-    green: 'text-response-green',
-    amber: 'text-response-amber',
-  };
-  return map[color];
-}
-
-export function getBorderColorClass(color: ResponseColor): string {
-  const map: Record<ResponseColor, string> = {
-    blue: 'border-l-[hsl(var(--response-blue))]',
-    yellow: 'border-l-[hsl(var(--response-yellow))]',
-    orange: 'border-l-[hsl(var(--response-orange))]',
-    white: 'border-l-[hsl(var(--response-white))]',
-    grey: 'border-l-[hsl(var(--response-grey))]',
-    black: 'border-l-[hsl(var(--response-black))]',
-    red: 'border-l-[hsl(var(--response-red))]',
-    green: 'border-l-[hsl(var(--response-green))]',
-    amber: 'border-l-[hsl(var(--response-amber))]',
-  };
-  return map[color];
 }
