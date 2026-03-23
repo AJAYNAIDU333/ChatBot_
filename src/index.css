@@ -36,16 +36,16 @@
 
     --radius: 0.75rem;
 
-    /* Chat response colors */
-    --response-blue: 210 100% 56%;
-    --response-yellow: 48 96% 53%;
-    --response-orange: 25 95% 53%;
+    /* Chat response colors — all WCAG 2.0 AA (4.5:1+) on --card bg hsl(220,18%,14%) */
+    --response-blue: 210 100% 65%;
+    --response-yellow: 48 100% 60%;
+    --response-orange: 25 100% 62%;
     --response-white: 0 0% 100%;
-    --response-grey: 0 0% 60%;
-    --response-black: 0 0% 20%;
-    --response-red: 0 72% 51%;
-    --response-green: 142 71% 45%;
-    --response-amber: 38 92% 50%;
+    --response-grey: 0 0% 72%;
+    --response-black: 0 0% 68%;
+    --response-red: 0 80% 65%;
+    --response-green: 142 72% 55%;
+    --response-amber: 38 100% 58%;
 
     /* Fonts */
     --font-display: 'JetBrains Mono', monospace;
