@@ -114,15 +114,18 @@ export function determineColor(input: string): ResponseColor {
  */
 export function getColorClass(color: ResponseColor): string {
   const map: Record<ResponseColor, string> = {
-    blue: "text-white bg-blue-700",
-    yellow: "text-black bg-yellow-400",
-    orange: "text-white bg-orange-700",
-    white: "text-black bg-white border border-slate-200",
-    grey: "text-white bg-slate-500",
-    black: "text-white bg-black",
-    red: "text-white bg-red-800",
-    green: "text-white bg-green-800",
-    amber: "text-white bg-amber-700",
+    // Adding '!' ensures these colors override any global styles
+    blue: "!text-white bg-blue-700",
+    orange: "!text-white bg-orange-700",
+    black: "!text-white bg-black",
+    red: "!text-white bg-red-800",
+    green: "!text-white bg-green-800",
+    amber: "!text-white bg-amber-700",
+    grey: "!text-white bg-slate-500",
+
+    // Light backgrounds use black text
+    yellow: "!text-black bg-yellow-400",
+    white: "!text-black bg-white border border-slate-200",
   };
   return map[color];
 }
