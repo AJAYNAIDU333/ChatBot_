@@ -16,9 +16,9 @@ The system parses input for time-based keywords and deadlines using Regex. It ca
 
 ### Tier 2: Numerical Modulo (The Grayscale Engine)
 If no temporal trigger is detected, the engine analyzes free-form integers using a Modulo 100 (`% 100`) calculation to assign visual weight:
-* **Black:** Power Numbers (Multiples of 100).
-* **Grey:** Mid-point numbers (Ending in 50).
-* **White:** Base numbers (Ending in 00).
+* **Black:** Input is exactly 100, or the last two digits fall in the 75–99 range.
+* **Grey:** Last two digits are exactly 50, or fall in the 25–49 or 51–74 ranges.
+* **White:** Last two digits are 00, or fall in the 01–24 range.
 
 ### Tier 3: Sentiment Fallback (AI Integration)
 If the input contains no specific time or numerical data, the payload is sent to **Gemini 1.5 Flash**. The LLM performs a sentiment analysis to return a specific color state:
