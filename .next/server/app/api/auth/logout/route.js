@@ -1,0 +1,146 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(() => {
+var exports = {};
+exports.id = "app/api/auth/logout/route";
+exports.ids = ["app/api/auth/logout/route"];
+exports.modules = {
+
+/***/ "../../client/components/action-async-storage.external":
+/*!*******************************************************************************!*\
+  !*** external "next/dist/client/components/action-async-storage.external.js" ***!
+  \*******************************************************************************/
+/***/ ((module) => {
+
+module.exports = require("next/dist/client/components/action-async-storage.external.js");
+
+/***/ }),
+
+/***/ "../../client/components/request-async-storage.external":
+/*!********************************************************************************!*\
+  !*** external "next/dist/client/components/request-async-storage.external.js" ***!
+  \********************************************************************************/
+/***/ ((module) => {
+
+module.exports = require("next/dist/client/components/request-async-storage.external.js");
+
+/***/ }),
+
+/***/ "../../client/components/static-generation-async-storage.external":
+/*!******************************************************************************************!*\
+  !*** external "next/dist/client/components/static-generation-async-storage.external.js" ***!
+  \******************************************************************************************/
+/***/ ((module) => {
+
+module.exports = require("next/dist/client/components/static-generation-async-storage.external.js");
+
+/***/ }),
+
+/***/ "next/dist/compiled/next-server/app-page.runtime.dev.js":
+/*!*************************************************************************!*\
+  !*** external "next/dist/compiled/next-server/app-page.runtime.dev.js" ***!
+  \*************************************************************************/
+/***/ ((module) => {
+
+module.exports = require("next/dist/compiled/next-server/app-page.runtime.dev.js");
+
+/***/ }),
+
+/***/ "next/dist/compiled/next-server/app-route.runtime.dev.js":
+/*!**************************************************************************!*\
+  !*** external "next/dist/compiled/next-server/app-route.runtime.dev.js" ***!
+  \**************************************************************************/
+/***/ ((module) => {
+
+module.exports = require("next/dist/compiled/next-server/app-route.runtime.dev.js");
+
+/***/ }),
+
+/***/ "node:buffer":
+/*!******************************!*\
+  !*** external "node:buffer" ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = require("node:buffer");
+
+/***/ }),
+
+/***/ "node:crypto":
+/*!******************************!*\
+  !*** external "node:crypto" ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = require("node:crypto");
+
+/***/ }),
+
+/***/ "node:util":
+/*!****************************!*\
+  !*** external "node:util" ***!
+  \****************************/
+/***/ ((module) => {
+
+module.exports = require("node:util");
+
+/***/ }),
+
+/***/ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fauth%2Flogout%2Froute&page=%2Fapi%2Fauth%2Flogout%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fauth%2Flogout%2Froute.ts&appDir=C%3A%5CUsers%5Cajayn%5CMusic%5Cchatbot%5Cchatbot%5Csrc%5Capp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=C%3A%5CUsers%5Cajayn%5CMusic%5Cchatbot%5Cchatbot&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fauth%2Flogout%2Froute&page=%2Fapi%2Fauth%2Flogout%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fauth%2Flogout%2Froute.ts&appDir=C%3A%5CUsers%5Cajayn%5CMusic%5Cchatbot%5Cchatbot%5Csrc%5Capp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=C%3A%5CUsers%5Cajayn%5CMusic%5Cchatbot%5Cchatbot&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D! ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   originalPathname: () => (/* binding */ originalPathname),\n/* harmony export */   patchFetch: () => (/* binding */ patchFetch),\n/* harmony export */   requestAsyncStorage: () => (/* binding */ requestAsyncStorage),\n/* harmony export */   routeModule: () => (/* binding */ routeModule),\n/* harmony export */   serverHooks: () => (/* binding */ serverHooks),\n/* harmony export */   staticGenerationAsyncStorage: () => (/* binding */ staticGenerationAsyncStorage)\n/* harmony export */ });\n/* harmony import */ var next_dist_server_future_route_modules_app_route_module_compiled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/server/future/route-modules/app-route/module.compiled */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-route/module.compiled.js\");\n/* harmony import */ var next_dist_server_future_route_modules_app_route_module_compiled__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_future_route_modules_app_route_module_compiled__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dist/server/future/route-kind */ \"(rsc)/./node_modules/next/dist/server/future/route-kind.js\");\n/* harmony import */ var next_dist_server_lib_patch_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dist/server/lib/patch-fetch */ \"(rsc)/./node_modules/next/dist/server/lib/patch-fetch.js\");\n/* harmony import */ var next_dist_server_lib_patch_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_lib_patch_fetch__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var C_Users_ajayn_Music_chatbot_chatbot_src_app_api_auth_logout_route_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/app/api/auth/logout/route.ts */ \"(rsc)/./src/app/api/auth/logout/route.ts\");\n\n\n\n\n// We inject the nextConfigOutput here so that we can use them in the route\n// module.\nconst nextConfigOutput = \"\"\nconst routeModule = new next_dist_server_future_route_modules_app_route_module_compiled__WEBPACK_IMPORTED_MODULE_0__.AppRouteRouteModule({\n    definition: {\n        kind: next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__.RouteKind.APP_ROUTE,\n        page: \"/api/auth/logout/route\",\n        pathname: \"/api/auth/logout\",\n        filename: \"route\",\n        bundlePath: \"app/api/auth/logout/route\"\n    },\n    resolvedPagePath: \"C:\\\\Users\\\\ajayn\\\\Music\\\\chatbot\\\\chatbot\\\\src\\\\app\\\\api\\\\auth\\\\logout\\\\route.ts\",\n    nextConfigOutput,\n    userland: C_Users_ajayn_Music_chatbot_chatbot_src_app_api_auth_logout_route_ts__WEBPACK_IMPORTED_MODULE_3__\n});\n// Pull out the exports that we need to expose from the module. This should\n// be eliminated when we've moved the other routes to the new format. These\n// are used to hook into the route.\nconst { requestAsyncStorage, staticGenerationAsyncStorage, serverHooks } = routeModule;\nconst originalPathname = \"/api/auth/logout/route\";\nfunction patchFetch() {\n    return (0,next_dist_server_lib_patch_fetch__WEBPACK_IMPORTED_MODULE_2__.patchFetch)({\n        serverHooks,\n        staticGenerationAsyncStorage\n    });\n}\n\n\n//# sourceMappingURL=app-route.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWFwcC1sb2FkZXIuanM/bmFtZT1hcHAlMkZhcGklMkZhdXRoJTJGbG9nb3V0JTJGcm91dGUmcGFnZT0lMkZhcGklMkZhdXRoJTJGbG9nb3V0JTJGcm91dGUmYXBwUGF0aHM9JnBhZ2VQYXRoPXByaXZhdGUtbmV4dC1hcHAtZGlyJTJGYXBpJTJGYXV0aCUyRmxvZ291dCUyRnJvdXRlLnRzJmFwcERpcj1DJTNBJTVDVXNlcnMlNUNhamF5biU1Q011c2ljJTVDY2hhdGJvdCU1Q2NoYXRib3QlNUNzcmMlNUNhcHAmcGFnZUV4dGVuc2lvbnM9dHN4JnBhZ2VFeHRlbnNpb25zPXRzJnBhZ2VFeHRlbnNpb25zPWpzeCZwYWdlRXh0ZW5zaW9ucz1qcyZyb290RGlyPUMlM0ElNUNVc2VycyU1Q2FqYXluJTVDTXVzaWMlNUNjaGF0Ym90JTVDY2hhdGJvdCZpc0Rldj10cnVlJnRzY29uZmlnUGF0aD10c2NvbmZpZy5qc29uJmJhc2VQYXRoPSZhc3NldFByZWZpeD0mbmV4dENvbmZpZ091dHB1dD0mcHJlZmVycmVkUmVnaW9uPSZtaWRkbGV3YXJlQ29uZmlnPWUzMCUzRCEiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7O0FBQXNHO0FBQ3ZDO0FBQ2M7QUFDZ0M7QUFDN0c7QUFDQTtBQUNBO0FBQ0Esd0JBQXdCLGdIQUFtQjtBQUMzQztBQUNBLGNBQWMseUVBQVM7QUFDdkI7QUFDQTtBQUNBO0FBQ0E7QUFDQSxLQUFLO0FBQ0w7QUFDQTtBQUNBLFlBQVk7QUFDWixDQUFDO0FBQ0Q7QUFDQTtBQUNBO0FBQ0EsUUFBUSxpRUFBaUU7QUFDekU7QUFDQTtBQUNBLFdBQVcsNEVBQVc7QUFDdEI7QUFDQTtBQUNBLEtBQUs7QUFDTDtBQUN1SDs7QUFFdkgiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9jaGF0Ym90Lz81MDlhIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEFwcFJvdXRlUm91dGVNb2R1bGUgfSBmcm9tIFwibmV4dC9kaXN0L3NlcnZlci9mdXR1cmUvcm91dGUtbW9kdWxlcy9hcHAtcm91dGUvbW9kdWxlLmNvbXBpbGVkXCI7XG5pbXBvcnQgeyBSb3V0ZUtpbmQgfSBmcm9tIFwibmV4dC9kaXN0L3NlcnZlci9mdXR1cmUvcm91dGUta2luZFwiO1xuaW1wb3J0IHsgcGF0Y2hGZXRjaCBhcyBfcGF0Y2hGZXRjaCB9IGZyb20gXCJuZXh0L2Rpc3Qvc2VydmVyL2xpYi9wYXRjaC1mZXRjaFwiO1xuaW1wb3J0ICogYXMgdXNlcmxhbmQgZnJvbSBcIkM6XFxcXFVzZXJzXFxcXGFqYXluXFxcXE11c2ljXFxcXGNoYXRib3RcXFxcY2hhdGJvdFxcXFxzcmNcXFxcYXBwXFxcXGFwaVxcXFxhdXRoXFxcXGxvZ291dFxcXFxyb3V0ZS50c1wiO1xuLy8gV2UgaW5qZWN0IHRoZSBuZXh0Q29uZmlnT3V0cHV0IGhlcmUgc28gdGhhdCB3ZSBjYW4gdXNlIHRoZW0gaW4gdGhlIHJvdXRlXG4vLyBtb2R1bGUuXG5jb25zdCBuZXh0Q29uZmlnT3V0cHV0ID0gXCJcIlxuY29uc3Qgcm91dGVNb2R1bGUgPSBuZXcgQXBwUm91dGVSb3V0ZU1vZHVsZSh7XG4gICAgZGVmaW5pdGlvbjoge1xuICAgICAgICBraW5kOiBSb3V0ZUtpbmQuQVBQX1JPVVRFLFxuICAgICAgICBwYWdlOiBcIi9hcGkvYXV0aC9sb2dvdXQvcm91dGVcIixcbiAgICAgICAgcGF0aG5hbWU6IFwiL2FwaS9hdXRoL2xvZ291dFwiLFxuICAgICAgICBmaWxlbmFtZTogXCJyb3V0ZVwiLFxuICAgICAgICBidW5kbGVQYXRoOiBcImFwcC9hcGkvYXV0aC9sb2dvdXQvcm91dGVcIlxuICAgIH0sXG4gICAgcmVzb2x2ZWRQYWdlUGF0aDogXCJDOlxcXFxVc2Vyc1xcXFxhamF5blxcXFxNdXNpY1xcXFxjaGF0Ym90XFxcXGNoYXRib3RcXFxcc3JjXFxcXGFwcFxcXFxhcGlcXFxcYXV0aFxcXFxsb2dvdXRcXFxccm91dGUudHNcIixcbiAgICBuZXh0Q29uZmlnT3V0cHV0LFxuICAgIHVzZXJsYW5kXG59KTtcbi8vIFB1bGwgb3V0IHRoZSBleHBvcnRzIHRoYXQgd2UgbmVlZCB0byBleHBvc2UgZnJvbSB0aGUgbW9kdWxlLiBUaGlzIHNob3VsZFxuLy8gYmUgZWxpbWluYXRlZCB3aGVuIHdlJ3ZlIG1vdmVkIHRoZSBvdGhlciByb3V0ZXMgdG8gdGhlIG5ldyBmb3JtYXQuIFRoZXNlXG4vLyBhcmUgdXNlZCB0byBob29rIGludG8gdGhlIHJvdXRlLlxuY29uc3QgeyByZXF1ZXN0QXN5bmNTdG9yYWdlLCBzdGF0aWNHZW5lcmF0aW9uQXN5bmNTdG9yYWdlLCBzZXJ2ZXJIb29rcyB9ID0gcm91dGVNb2R1bGU7XG5jb25zdCBvcmlnaW5hbFBhdGhuYW1lID0gXCIvYXBpL2F1dGgvbG9nb3V0L3JvdXRlXCI7XG5mdW5jdGlvbiBwYXRjaEZldGNoKCkge1xuICAgIHJldHVybiBfcGF0Y2hGZXRjaCh7XG4gICAgICAgIHNlcnZlckhvb2tzLFxuICAgICAgICBzdGF0aWNHZW5lcmF0aW9uQXN5bmNTdG9yYWdlXG4gICAgfSk7XG59XG5leHBvcnQgeyByb3V0ZU1vZHVsZSwgcmVxdWVzdEFzeW5jU3RvcmFnZSwgc3RhdGljR2VuZXJhdGlvbkFzeW5jU3RvcmFnZSwgc2VydmVySG9va3MsIG9yaWdpbmFsUGF0aG5hbWUsIHBhdGNoRmV0Y2gsICB9O1xuXG4vLyMgc291cmNlTWFwcGluZ1VSTD1hcHAtcm91dGUuanMubWFwIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fauth%2Flogout%2Froute&page=%2Fapi%2Fauth%2Flogout%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fauth%2Flogout%2Froute.ts&appDir=C%3A%5CUsers%5Cajayn%5CMusic%5Cchatbot%5Cchatbot%5Csrc%5Capp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=C%3A%5CUsers%5Cajayn%5CMusic%5Cchatbot%5Cchatbot&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!\n");
+
+/***/ }),
+
+/***/ "(rsc)/./src/app/api/auth/logout/route.ts":
+/*!******************************************!*\
+  !*** ./src/app/api/auth/logout/route.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   POST: () => (/* binding */ POST)\n/* harmony export */ });\n/* harmony import */ var next_server__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/server */ \"(rsc)/./node_modules/next/dist/api/server.js\");\n/* harmony import */ var _server_auth_session_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/server/auth/session-cookie */ \"(rsc)/./src/server/auth/session-cookie.ts\");\n\n\nasync function POST() {\n    await (0,_server_auth_session_cookie__WEBPACK_IMPORTED_MODULE_1__.clearSessionCookie)();\n    return next_server__WEBPACK_IMPORTED_MODULE_0__.NextResponse.json({\n        ok: true\n    });\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvYXBwL2FwaS9hdXRoL2xvZ291dC9yb3V0ZS50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7QUFBMkM7QUFDdUI7QUFFM0QsZUFBZUU7SUFDcEIsTUFBTUQsK0VBQWtCQTtJQUN4QixPQUFPRCxxREFBWUEsQ0FBQ0csSUFBSSxDQUFDO1FBQUVDLElBQUk7SUFBSztBQUN0QyIsInNvdXJjZXMiOlsid2VicGFjazovL2NoYXRib3QvLi9zcmMvYXBwL2FwaS9hdXRoL2xvZ291dC9yb3V0ZS50cz9kMjY3Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5leHRSZXNwb25zZSB9IGZyb20gXCJuZXh0L3NlcnZlclwiO1xuaW1wb3J0IHsgY2xlYXJTZXNzaW9uQ29va2llIH0gZnJvbSBcIkAvc2VydmVyL2F1dGgvc2Vzc2lvbi1jb29raWVcIjtcblxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIFBPU1QoKSB7XG4gIGF3YWl0IGNsZWFyU2Vzc2lvbkNvb2tpZSgpO1xuICByZXR1cm4gTmV4dFJlc3BvbnNlLmpzb24oeyBvazogdHJ1ZSB9KTtcbn1cbiJdLCJuYW1lcyI6WyJOZXh0UmVzcG9uc2UiLCJjbGVhclNlc3Npb25Db29raWUiLCJQT1NUIiwianNvbiIsIm9rIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./src/app/api/auth/logout/route.ts\n");
+
+/***/ }),
+
+/***/ "(rsc)/./src/server/auth/session-cookie.ts":
+/*!*******************************************!*\
+  !*** ./src/server/auth/session-cookie.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   clearSessionCookie: () => (/* binding */ clearSessionCookie),\n/* harmony export */   getSessionFromCookies: () => (/* binding */ getSessionFromCookies),\n/* harmony export */   setSessionCookieFromEmail: () => (/* binding */ setSessionCookieFromEmail)\n/* harmony export */ });\n/* harmony import */ var next_headers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/headers */ \"(rsc)/./node_modules/next/dist/api/headers.js\");\n/* harmony import */ var _server_auth_session_token__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/server/auth/session-token */ \"(rsc)/./src/server/auth/session-token.ts\");\n\n\nasync function setSessionCookieFromEmail(email) {\n    const token = await (0,_server_auth_session_token__WEBPACK_IMPORTED_MODULE_1__.createSessionToken)(email);\n    (0,next_headers__WEBPACK_IMPORTED_MODULE_0__.cookies)().set(_server_auth_session_token__WEBPACK_IMPORTED_MODULE_1__.SESSION_COOKIE, token, {\n        httpOnly: true,\n        secure: \"development\" === \"production\",\n        sameSite: \"lax\",\n        path: \"/\",\n        maxAge: 60 * 60 * 24 * 7\n    });\n}\nasync function clearSessionCookie() {\n    (0,next_headers__WEBPACK_IMPORTED_MODULE_0__.cookies)().delete(_server_auth_session_token__WEBPACK_IMPORTED_MODULE_1__.SESSION_COOKIE);\n}\nasync function getSessionFromCookies() {\n    const token = (0,next_headers__WEBPACK_IMPORTED_MODULE_0__.cookies)().get(_server_auth_session_token__WEBPACK_IMPORTED_MODULE_1__.SESSION_COOKIE)?.value;\n    if (!token) return null;\n    try {\n        return await (0,_server_auth_session_token__WEBPACK_IMPORTED_MODULE_1__.verifySessionToken)(token);\n    } catch  {\n        return null;\n    }\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvc2VydmVyL2F1dGgvc2Vzc2lvbi1jb29raWUudHMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFBdUM7QUFLRjtBQUU5QixlQUFlSSwwQkFBMEJDLEtBQWE7SUFDM0QsTUFBTUMsUUFBUSxNQUFNSiw4RUFBa0JBLENBQUNHO0lBQ3ZDTCxxREFBT0EsR0FBR08sR0FBRyxDQUFDTixzRUFBY0EsRUFBRUssT0FBTztRQUNuQ0UsVUFBVTtRQUNWQyxRQUFRQyxrQkFBeUI7UUFDakNDLFVBQVU7UUFDVkMsTUFBTTtRQUNOQyxRQUFRLEtBQUssS0FBSyxLQUFLO0lBQ3pCO0FBQ0Y7QUFFTyxlQUFlQztJQUNwQmQscURBQU9BLEdBQUdlLE1BQU0sQ0FBQ2Qsc0VBQWNBO0FBQ2pDO0FBRU8sZUFBZWU7SUFDcEIsTUFBTVYsUUFBUU4scURBQU9BLEdBQUdpQixHQUFHLENBQUNoQixzRUFBY0EsR0FBR2lCO0lBQzdDLElBQUksQ0FBQ1osT0FBTyxPQUFPO0lBQ25CLElBQUk7UUFDRixPQUFPLE1BQU1ILDhFQUFrQkEsQ0FBQ0c7SUFDbEMsRUFBRSxPQUFNO1FBQ04sT0FBTztJQUNUO0FBQ0YiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9jaGF0Ym90Ly4vc3JjL3NlcnZlci9hdXRoL3Nlc3Npb24tY29va2llLnRzP2NjODAiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgY29va2llcyB9IGZyb20gXCJuZXh0L2hlYWRlcnNcIjtcbmltcG9ydCB7XG4gIFNFU1NJT05fQ09PS0lFLFxuICBjcmVhdGVTZXNzaW9uVG9rZW4sXG4gIHZlcmlmeVNlc3Npb25Ub2tlbixcbn0gZnJvbSBcIkAvc2VydmVyL2F1dGgvc2Vzc2lvbi10b2tlblwiO1xuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gc2V0U2Vzc2lvbkNvb2tpZUZyb21FbWFpbChlbWFpbDogc3RyaW5nKTogUHJvbWlzZTx2b2lkPiB7XG4gIGNvbnN0IHRva2VuID0gYXdhaXQgY3JlYXRlU2Vzc2lvblRva2VuKGVtYWlsKTtcbiAgY29va2llcygpLnNldChTRVNTSU9OX0NPT0tJRSwgdG9rZW4sIHtcbiAgICBodHRwT25seTogdHJ1ZSxcbiAgICBzZWN1cmU6IHByb2Nlc3MuZW52Lk5PREVfRU5WID09PSBcInByb2R1Y3Rpb25cIixcbiAgICBzYW1lU2l0ZTogXCJsYXhcIixcbiAgICBwYXRoOiBcIi9cIixcbiAgICBtYXhBZ2U6IDYwICogNjAgKiAyNCAqIDcsXG4gIH0pO1xufVxuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xlYXJTZXNzaW9uQ29va2llKCk6IFByb21pc2U8dm9pZD4ge1xuICBjb29raWVzKCkuZGVsZXRlKFNFU1NJT05fQ09PS0lFKTtcbn1cblxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGdldFNlc3Npb25Gcm9tQ29va2llcygpOiBQcm9taXNlPHsgZW1haWw6IHN0cmluZyB9IHwgbnVsbD4ge1xuICBjb25zdCB0b2tlbiA9IGNvb2tpZXMoKS5nZXQoU0VTU0lPTl9DT09LSUUpPy52YWx1ZTtcbiAgaWYgKCF0b2tlbikgcmV0dXJuIG51bGw7XG4gIHRyeSB7XG4gICAgcmV0dXJuIGF3YWl0IHZlcmlmeVNlc3Npb25Ub2tlbih0b2tlbik7XG4gIH0gY2F0Y2gge1xuICAgIHJldHVybiBudWxsO1xuICB9XG59XG4iXSwibmFtZXMiOlsiY29va2llcyIsIlNFU1NJT05fQ09PS0lFIiwiY3JlYXRlU2Vzc2lvblRva2VuIiwidmVyaWZ5U2Vzc2lvblRva2VuIiwic2V0U2Vzc2lvbkNvb2tpZUZyb21FbWFpbCIsImVtYWlsIiwidG9rZW4iLCJzZXQiLCJodHRwT25seSIsInNlY3VyZSIsInByb2Nlc3MiLCJzYW1lU2l0ZSIsInBhdGgiLCJtYXhBZ2UiLCJjbGVhclNlc3Npb25Db29raWUiLCJkZWxldGUiLCJnZXRTZXNzaW9uRnJvbUNvb2tpZXMiLCJnZXQiLCJ2YWx1ZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./src/server/auth/session-cookie.ts\n");
+
+/***/ }),
+
+/***/ "(rsc)/./src/server/auth/session-token.ts":
+/*!******************************************!*\
+  !*** ./src/server/auth/session-token.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   SESSION_COOKIE: () => (/* binding */ SESSION_COOKIE),\n/* harmony export */   createSessionToken: () => (/* binding */ createSessionToken),\n/* harmony export */   verifySessionToken: () => (/* binding */ verifySessionToken),\n/* harmony export */   verifySessionTokenEdge: () => (/* binding */ verifySessionTokenEdge)\n/* harmony export */ });\n/* harmony import */ var jose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jose */ \"(rsc)/./node_modules/jose/dist/node/esm/jwt/sign.js\");\n/* harmony import */ var jose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jose */ \"(rsc)/./node_modules/jose/dist/node/esm/jwt/verify.js\");\n\nconst SESSION_COOKIE = \"ps_session\";\nfunction getSecretKey() {\n    const secret = process.env.SESSION_SECRET;\n    if (!secret || secret.length < 32) {\n        throw new Error(\"SESSION_SECRET must be set and at least 32 characters\");\n    }\n    return new TextEncoder().encode(secret);\n}\nasync function createSessionToken(email) {\n    return new jose__WEBPACK_IMPORTED_MODULE_0__.SignJWT({\n        email\n    }).setProtectedHeader({\n        alg: \"HS256\"\n    }).setIssuedAt().setExpirationTime(\"7d\").sign(getSecretKey());\n}\nasync function verifySessionToken(token) {\n    const { payload } = await (0,jose__WEBPACK_IMPORTED_MODULE_1__.jwtVerify)(token, getSecretKey());\n    const email = payload.email;\n    if (typeof email !== \"string\" || !email) {\n        throw new Error(\"Invalid session payload\");\n    }\n    return {\n        email\n    };\n}\nasync function verifySessionTokenEdge(token, secret) {\n    if (!secret || secret.length < 32) return null;\n    try {\n        const key = new TextEncoder().encode(secret);\n        const { payload } = await (0,jose__WEBPACK_IMPORTED_MODULE_1__.jwtVerify)(token, key);\n        const email = payload.email;\n        if (typeof email !== \"string\" || !email) return null;\n        return {\n            email\n        };\n    } catch  {\n        return null;\n    }\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvc2VydmVyL2F1dGgvc2Vzc2lvbi10b2tlbi50cyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBMEM7QUFFbkMsTUFBTUUsaUJBQWlCLGFBQWE7QUFFM0MsU0FBU0M7SUFDUCxNQUFNQyxTQUFTQyxRQUFRQyxHQUFHLENBQUNDLGNBQWM7SUFDekMsSUFBSSxDQUFDSCxVQUFVQSxPQUFPSSxNQUFNLEdBQUcsSUFBSTtRQUNqQyxNQUFNLElBQUlDLE1BQU07SUFDbEI7SUFDQSxPQUFPLElBQUlDLGNBQWNDLE1BQU0sQ0FBQ1A7QUFDbEM7QUFFTyxlQUFlUSxtQkFBbUJDLEtBQWE7SUFDcEQsT0FBTyxJQUFJYix5Q0FBT0EsQ0FBQztRQUFFYTtJQUFNLEdBQ3hCQyxrQkFBa0IsQ0FBQztRQUFFQyxLQUFLO0lBQVEsR0FDbENDLFdBQVcsR0FDWEMsaUJBQWlCLENBQUMsTUFDbEJDLElBQUksQ0FBQ2Y7QUFDVjtBQUVPLGVBQWVnQixtQkFBbUJDLEtBQWE7SUFDcEQsTUFBTSxFQUFFQyxPQUFPLEVBQUUsR0FBRyxNQUFNcEIsK0NBQVNBLENBQUNtQixPQUFPakI7SUFDM0MsTUFBTVUsUUFBUVEsUUFBUVIsS0FBSztJQUMzQixJQUFJLE9BQU9BLFVBQVUsWUFBWSxDQUFDQSxPQUFPO1FBQ3ZDLE1BQU0sSUFBSUosTUFBTTtJQUNsQjtJQUNBLE9BQU87UUFBRUk7SUFBTTtBQUNqQjtBQUVPLGVBQWVTLHVCQUNwQkYsS0FBYSxFQUNiaEIsTUFBYztJQUVkLElBQUksQ0FBQ0EsVUFBVUEsT0FBT0ksTUFBTSxHQUFHLElBQUksT0FBTztJQUMxQyxJQUFJO1FBQ0YsTUFBTWUsTUFBTSxJQUFJYixjQUFjQyxNQUFNLENBQUNQO1FBQ3JDLE1BQU0sRUFBRWlCLE9BQU8sRUFBRSxHQUFHLE1BQU1wQiwrQ0FBU0EsQ0FBQ21CLE9BQU9HO1FBQzNDLE1BQU1WLFFBQVFRLFFBQVFSLEtBQUs7UUFDM0IsSUFBSSxPQUFPQSxVQUFVLFlBQVksQ0FBQ0EsT0FBTyxPQUFPO1FBQ2hELE9BQU87WUFBRUE7UUFBTTtJQUNqQixFQUFFLE9BQU07UUFDTixPQUFPO0lBQ1Q7QUFDRiIsInNvdXJjZXMiOlsid2VicGFjazovL2NoYXRib3QvLi9zcmMvc2VydmVyL2F1dGgvc2Vzc2lvbi10b2tlbi50cz9mNzhkIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFNpZ25KV1QsIGp3dFZlcmlmeSB9IGZyb20gXCJqb3NlXCI7XG5cbmV4cG9ydCBjb25zdCBTRVNTSU9OX0NPT0tJRSA9IFwicHNfc2Vzc2lvblwiO1xuXG5mdW5jdGlvbiBnZXRTZWNyZXRLZXkoKTogVWludDhBcnJheSB7XG4gIGNvbnN0IHNlY3JldCA9IHByb2Nlc3MuZW52LlNFU1NJT05fU0VDUkVUO1xuICBpZiAoIXNlY3JldCB8fCBzZWNyZXQubGVuZ3RoIDwgMzIpIHtcbiAgICB0aHJvdyBuZXcgRXJyb3IoXCJTRVNTSU9OX1NFQ1JFVCBtdXN0IGJlIHNldCBhbmQgYXQgbGVhc3QgMzIgY2hhcmFjdGVyc1wiKTtcbiAgfVxuICByZXR1cm4gbmV3IFRleHRFbmNvZGVyKCkuZW5jb2RlKHNlY3JldCk7XG59XG5cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBjcmVhdGVTZXNzaW9uVG9rZW4oZW1haWw6IHN0cmluZyk6IFByb21pc2U8c3RyaW5nPiB7XG4gIHJldHVybiBuZXcgU2lnbkpXVCh7IGVtYWlsIH0pXG4gICAgLnNldFByb3RlY3RlZEhlYWRlcih7IGFsZzogXCJIUzI1NlwiIH0pXG4gICAgLnNldElzc3VlZEF0KClcbiAgICAuc2V0RXhwaXJhdGlvblRpbWUoXCI3ZFwiKVxuICAgIC5zaWduKGdldFNlY3JldEtleSgpKTtcbn1cblxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHZlcmlmeVNlc3Npb25Ub2tlbih0b2tlbjogc3RyaW5nKTogUHJvbWlzZTx7IGVtYWlsOiBzdHJpbmcgfT4ge1xuICBjb25zdCB7IHBheWxvYWQgfSA9IGF3YWl0IGp3dFZlcmlmeSh0b2tlbiwgZ2V0U2VjcmV0S2V5KCkpO1xuICBjb25zdCBlbWFpbCA9IHBheWxvYWQuZW1haWw7XG4gIGlmICh0eXBlb2YgZW1haWwgIT09IFwic3RyaW5nXCIgfHwgIWVtYWlsKSB7XG4gICAgdGhyb3cgbmV3IEVycm9yKFwiSW52YWxpZCBzZXNzaW9uIHBheWxvYWRcIik7XG4gIH1cbiAgcmV0dXJuIHsgZW1haWwgfTtcbn1cblxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIHZlcmlmeVNlc3Npb25Ub2tlbkVkZ2UoXG4gIHRva2VuOiBzdHJpbmcsXG4gIHNlY3JldDogc3RyaW5nLFxuKTogUHJvbWlzZTx7IGVtYWlsOiBzdHJpbmcgfSB8IG51bGw+IHtcbiAgaWYgKCFzZWNyZXQgfHwgc2VjcmV0Lmxlbmd0aCA8IDMyKSByZXR1cm4gbnVsbDtcbiAgdHJ5IHtcbiAgICBjb25zdCBrZXkgPSBuZXcgVGV4dEVuY29kZXIoKS5lbmNvZGUoc2VjcmV0KTtcbiAgICBjb25zdCB7IHBheWxvYWQgfSA9IGF3YWl0IGp3dFZlcmlmeSh0b2tlbiwga2V5KTtcbiAgICBjb25zdCBlbWFpbCA9IHBheWxvYWQuZW1haWw7XG4gICAgaWYgKHR5cGVvZiBlbWFpbCAhPT0gXCJzdHJpbmdcIiB8fCAhZW1haWwpIHJldHVybiBudWxsO1xuICAgIHJldHVybiB7IGVtYWlsIH07XG4gIH0gY2F0Y2gge1xuICAgIHJldHVybiBudWxsO1xuICB9XG59XG4iXSwibmFtZXMiOlsiU2lnbkpXVCIsImp3dFZlcmlmeSIsIlNFU1NJT05fQ09PS0lFIiwiZ2V0U2VjcmV0S2V5Iiwic2VjcmV0IiwicHJvY2VzcyIsImVudiIsIlNFU1NJT05fU0VDUkVUIiwibGVuZ3RoIiwiRXJyb3IiLCJUZXh0RW5jb2RlciIsImVuY29kZSIsImNyZWF0ZVNlc3Npb25Ub2tlbiIsImVtYWlsIiwic2V0UHJvdGVjdGVkSGVhZGVyIiwiYWxnIiwic2V0SXNzdWVkQXQiLCJzZXRFeHBpcmF0aW9uVGltZSIsInNpZ24iLCJ2ZXJpZnlTZXNzaW9uVG9rZW4iLCJ0b2tlbiIsInBheWxvYWQiLCJ2ZXJpZnlTZXNzaW9uVG9rZW5FZGdlIiwia2V5Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./src/server/auth/session-token.ts\n");
+
+/***/ })
+
+};
+;
+
+// load runtime
+var __webpack_require__ = require("../../../../webpack-runtime.js");
+__webpack_require__.C(exports);
+var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/jose"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fauth%2Flogout%2Froute&page=%2Fapi%2Fauth%2Flogout%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fauth%2Flogout%2Froute.ts&appDir=C%3A%5CUsers%5Cajayn%5CMusic%5Cchatbot%5Cchatbot%5Csrc%5Capp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=C%3A%5CUsers%5Cajayn%5CMusic%5Cchatbot%5Cchatbot&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
+module.exports = __webpack_exports__;
+
+})();

@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { Landmark } from "lucide-react"; // Import the Landmark icon
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -47,17 +48,32 @@ export function LoginScreen() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-10">
-      <Card className="w-full max-w-md border-border/80 shadow-sm">
-        <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-2xl font-semibold tracking-tight">
-            Gatekeeper
-          </CardTitle>
-          <CardDescription>Petasight personnel only. Access is verified on the server.</CardDescription>
+      <Card className="w-full max-w-md border-border/80 shadow-lg">
+        <CardHeader className="space-y-4 text-center">
+          {/* Diplomatic Icon Section */}
+          <div className="flex justify-center">
+            <div className="p-3 rounded-full bg-primary/10">
+              <Landmark className="w-8 h-8 text-primary" />
+            </div>
+          </div>
+          
+          <div className="space-y-1">
+            <CardTitle className="text-2xl font-bold tracking-tight">
+              Petasight Diplomatic Portal
+            </CardTitle>
+            <CardDescription className="text-sm">
+              Identity verification in progress. <br />
+              Access restricted to authorized delegates.
+            </CardDescription>
+          </div>
         </CardHeader>
+
         <form onSubmit={onSubmit}>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Work email</Label>
+              <Label htmlFor="email" className="text-xs uppercase tracking-wider font-semibold opacity-70">
+                Diplomatic Email
+              </Label>
               <Input
                 id="email"
                 name="email"
@@ -69,22 +85,25 @@ export function LoginScreen() {
                   setEmail(ev.target.value);
                   setError(null);
                 }}
-                placeholder="name@petasight.com"
+                placeholder="delegate@petasight.com"
                 disabled={pending}
+                className="bg-muted/30"
                 aria-invalid={!!error}
                 aria-describedby={error ? "login-error" : undefined}
               />
             </div>
+            
             {error ? (
               <Alert variant="destructive" id="login-error" role="alert">
-                <AlertTitle>Unable to sign in</AlertTitle>
+                <AlertTitle>Access Denied</AlertTitle>
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             ) : null}
           </CardContent>
+
           <CardFooter>
-            <Button type="submit" className="w-full" disabled={pending}>
-              {pending ? "Checking…" : "Continue"}
+            <Button type="submit" className="w-full font-semibold" disabled={pending}>
+              {pending ? "Authenticating..." : "Enter Embassy"}
             </Button>
           </CardFooter>
         </form>
