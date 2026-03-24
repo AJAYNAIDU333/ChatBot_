@@ -1,5 +1,23 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
+const SENTIMENT_VALUES = new Set([
+  "very_sad",
+  "sad",
+  "neutral",
+  "happy",
+  "very_happy",
+]);
+
+function normalizeSentiment(raw: unknown): string {
+  if (typeof raw !== "string") return "neutral";
+  const s = raw.trim().toLowerCase().replace(/\s+/g, "_");
+  if (SENTIMENT_VALUES.has(s)) return s;
+  if (s === "red") return "very_sad";
+  if (s === "green") return "very_happy";
+  if (s === "amber") return "neutral";
+  return "neutral";
+}
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
@@ -24,15 +42,17 @@ ABSOLUTE RULES (never break these):
 5. Address geopolitical, economic, cultural, or personal topics as Putin would — with confidence and a Russian worldview.
 
 SENTIMENT ANALYSIS (required for every response):
-Analyze the emotional tone of the user's message:
-- "red" = the user sounds sad, frustrated, angry, or distressed
-- "green" = the user sounds happy, positive, enthusiastic, or grateful
-- "amber" = the tone is neutral, factual, unclear, or mixed
+Classify the emotional tone of the user's LATEST message using exactly one of these labels:
+- "very_sad" — deep distress, grief, despair, or intense negativity
+- "sad" — mild or moderate sadness, worry, or discouragement (not extreme)
+- "neutral" — factual, unclear, mixed, or emotionally flat
+- "happy" — mild or moderate positivity, thanks, or cheer
+- "very_happy" — strong joy, excitement, or enthusiasm
 
 Respond ONLY with a valid JSON object (no markdown fences, no extra text):
 {
   "reply": "Ваш русский ответ здесь...\n\n---\n\nYour English translation here...",
-  "sentiment": "red" | "green" | "amber"
+  "sentiment": "very_sad" | "sad" | "neutral" | "happy" | "very_happy"
 }`;
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -42,7 +62,7 @@ Respond ONLY with a valid JSON object (no markdown fences, no extra text):
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-3.1-pro-preview",
+        model: "google/gemini-2.0-flash",
         messages: [
           { role: "system", content: systemPrompt },
           ...messages,
@@ -73,12 +93,12 @@ Respond ONLY with a valid JSON object (no markdown fences, no extra text):
     const raw = data.choices?.[0]?.message?.content || "";
 
     let reply = raw;
-    let sentiment = "amber";
+    let sentiment = "neutral";
     try {
       const cleaned = raw.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
       const parsed = JSON.parse(cleaned);
       reply = parsed.reply || raw;
-      sentiment = parsed.sentiment || "amber";
+      sentiment = normalizeSentiment(parsed.sentiment);
     } catch {
       // If not JSON, use raw text
     }

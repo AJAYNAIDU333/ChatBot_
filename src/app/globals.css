@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 14% 97%;
+    --foreground: 220 18% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 18% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 18% 16%;
+
+    --primary: 220 14% 22%;
+    --primary-foreground: 40 14% 98%;
+
+    --secondary: 40 10% 93%;
+    --secondary-foreground: 220 18% 16%;
+
+    --muted: 40 8% 94%;
+    --muted-foreground: 220 10% 42%;
+
+    --accent: 40 12% 91%;
+    --accent-foreground: 220 18% 16%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
+    --ring: 220 14% 40%;
+
+    --radius: 0.875rem;
+
+    --response-blue: 210 100% 42%;
+    --response-yellow: 48 96% 48%;
+    --response-orange: 25 95% 48%;
+    --response-white: 0 0% 100%;
+    --response-grey: 220 9% 46%;
+    --response-black: 220 18% 12%;
+    --response-red: 0 72% 48%;
+    --response-green: 142 64% 38%;
+    --response-amber: 38 92% 44%;
+
+    --sidebar-background: 40 14% 97%;
+    --sidebar-foreground: 220 18% 16%;
+    --sidebar-primary: 220 14% 22%;
+    --sidebar-primary-foreground: 40 14% 98%;
+    --sidebar-accent: 40 10% 93%;
+    --sidebar-accent-foreground: 220 18% 16%;
+    --sidebar-border: 40 10% 88%;
+    --sidebar-ring: 220 14% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Force every prose node, including the root .prose element, to respect
+     whatever explicit !text-* class is placed on the wrapper. Without these
+     rules the typography plugin's color: var(--tw-prose-body) can override
+     inherited colors, causing WCAG failures inside colored chat bubbles. */
+  .prose,
+  .prose * {
+    color: inherit;
+  }
+}
